@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns;th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="head(title)">
+<head th:fragment="head(titleName)">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title th:text="${title}">タイトル</title>
+    <title th:text="${titleName}">タイトル</title>
 </head>
 
 <body>
