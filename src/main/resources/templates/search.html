@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragment/layout :: head('メニュー')}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>検索</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a th:href="@{/}">ホーム</a>
+            <a th:href="@{/search}">検索</a>
+            <a class="plus-button" th:href="@{/post/new}">＋</a>
+        </nav>
+    </header>
+
+    <h2>検索</h2>
+    <form>
+        <input type="text" placeholder="検索キーワードを入力">
+
+        <button type="submit">
+            検索
+        </button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragment/layout :: head('メニュー')}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>新規投稿</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a th:href="@{/}">ホーム</a>
+            <a th:href="@{/search}">検索</a>
+
+            <button class="submit-btn" form="postForm">
+                投稿
+            </button>
+        </nav>
+    </header>
+
+
+    <form id="postForm" th:action="@{/post}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>写真</label>
+            <input type="file" name="image">
+        </div>
+
+        <div class="form-group">
+            <label>タイトル</label>
+            <input type="text" name="title">
+        </div>
+
+        <div class="form-group">
+            <label>本文</label>
+            <textarea name="content" rows="10"></textarea>
+        </div>
+    </form>
+</body>
+
+</html>

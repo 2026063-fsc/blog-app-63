@@ -1,0 +1,77 @@
+body {
+    font-family: sans-serif;
+    color: #202124;
+    margin: 0;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: pink;
+    padding: 15px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.plus-button {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: pink;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+}
+
+.post-card {
+    background: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin: 20px;
+}
+
+input[type="text"],textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/*送信ボタン*/
+.submit-btn {
+    margin-left: auto;
+    background: white;
+    color: pink;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+ /*完了画面*/
+.complete-box {
+    text-align: center;
+    margin-top: 150px;
+}
+
+
+.home-btn {
+    display: inline-block;
+    background: pink;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
