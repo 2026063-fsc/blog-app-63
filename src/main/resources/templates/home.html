@@ -15,14 +15,12 @@
 
     <h2>投稿一覧</h2>
 
-    <div>
-        <h3>My Birthday Blog🍰</h3>
-        <p></p>
-    </div>
+    <div class="post-card" th:each="post:${posts}">
+        <h3>
+            <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a>
+        </h3>
+        <p th:text="${#strings.abbreviate(post.content,100)}"></p>
 
-    <div>
-        <h3>タイトル</h3>
-        <p>本文の一部...</p>
     </div>
 
 </body>
