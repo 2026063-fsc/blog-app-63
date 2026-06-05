@@ -22,10 +22,15 @@
     <div class="detail-container">
         <img th:if="${post.imagePath != null}" th:src="@{${post.imagePath}}" class="post-image">
 
-        <h1 th:text="${post.title}">My Birthday Blog🍰</h1>
+        <h1 th:text="${post.title}"></h1>
         <p class="content" th:text="${post.content}"></p>
 
     </div>
+
+    <form th:action="@{/post/{id}/delete(id=${post.id})}" method="post"
+        onsubmit="return confirm('本当にこの記事を削除してもよろしいですか？');">
+        <button type="submit" class="delete-btn">この記事を削除する</button>
+    </form>
 
 </body>
 

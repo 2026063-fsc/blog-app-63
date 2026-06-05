@@ -18,11 +18,32 @@
     </header>
 
     <h2>検索</h2>
-    <form>
-        <input type="text" placeholder="検索キーワードを入力">
+
+    <form th:action="@{/search}" method="get">
+        <input type="text" name="keyword" placeholder="検索キーワードを入力">
         <button type="submit">検索</button>
     </form>
 
+    <hr>
+    <h3>検索結果</h3>
+
+    <div th:if="${posts != null}">
+
+        <p th:if="${#lists.isEmpty(posts)} and ${keyword != null}" class="no-result">
+            「<span th:text="${keyword}"></span>」に一致する投稿は見つかりませんでした。
+        </p>
+
+        <div class="post-cards" th:each="post : ${posts}">
+            <h3>
+                <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a>
+            </h3>
+            <p th:text="${#strings.abbreviate(post.content, 100)}"></p>
+            <div th:if="${post.imagePath}">
+                <img th:src="@{/images/{name}(name=${post.imagePath})}" alt="投稿画像" class="post-images" />
+            </div>
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -45,7 +45,8 @@ nav a {
     margin: 20px;
 }
 
-input[type="text"],textarea {
+input[type="text"],
+textarea {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
@@ -60,7 +61,8 @@ input[type="text"],textarea {
     padding: 10px 20px;
     border-radius: 5px;
 }
- /*完了画面*/
+
+/*完了画面*/
 .complete-box {
     text-align: center;
     margin-top: 150px;
@@ -94,4 +96,41 @@ input[type="text"],textarea {
 .content {
     white-space: pre-wrap;
     line-height: 1.8;
+}
+
+.no-result {
+    /*検索結果エリア*/
+    color: #999;
+}
+
+/*投稿カード全体のスタイル*/
+.post-cards {
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.post-cards h3 {
+    /*カード内のタイトル*/
+    margin-top: 0;
+}
+
+.post-images {
+    /*カード内の投稿画像*/
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    border-radius: 6px;
+}
+
+.delete-btn {
+    display: inline;
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
 }
