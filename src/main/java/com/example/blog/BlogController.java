@@ -5,23 +5,29 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 
 
 
 @Controller
 public class BlogController {
 
+    private final PostRepository postRepository;
     private final PostService postService;
 
-    public BlogController(PostService postService) {
+    public BlogController(PostRepository postRepository, PostService postService) {
+        this.postRepository = postRepository;
         this.postService = postService;
     }
 
    @GetMapping("/")
     public String home(Model model) {
-        List<Post> posts = postService.findAll();
+        List<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         return "home";
     }
@@ -47,4 +53,11 @@ public class BlogController {
     public String submitPost() {
         return "complete";
     }
+
+    @PostMapping("/post/create")
+    public String create(@ModelAttribute Post post, @RequestParam("image") MultipartFile imagFile) {    
+        postRepository.save(post);
+        return "redirect:/";
+    }
+    
 }

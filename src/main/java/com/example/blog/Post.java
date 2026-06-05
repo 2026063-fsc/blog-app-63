@@ -5,13 +5,16 @@ public class Post {
     private Long id;
     private String title;
     private String content;
-    private String imagePath;
+    private String image_path;
 
-    public Post(Long id, String title, String content, String imagePath) {
+    public Post() { //中身は空でOK（データの読み込み時に引数なしコンストラクタが見つからないエラーが発生する）
+    }
+
+    public Post(Long id, String title, String content, String image_path) {
         this.id = id;
         this.title= title;
         this.content= content;
-        this.imagePath = imagePath;
+        this.image_path = image_path;
     }
 
     public Long getId() {
@@ -27,7 +30,7 @@ public class Post {
     }
 
     public String getImagePath() {
-        return imagePath;
+        return image_path;
     }
 
     public void setId(Long id) {
@@ -42,7 +45,7 @@ public class Post {
         this.content = content;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
     }
 }

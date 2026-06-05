@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragment/layout :: head('新規投稿')}" />
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{fragment/layout :: head('新規投稿')}"></div>
+</head>
 
 <body>
 
@@ -17,7 +20,7 @@
     </header>
 
 
-    <form id="postForm" th:action="@{/post}" method="post" enctype="multipart/form-data">
+    <form id="postForm" th:action="@{/post/create}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>写真</label>
             <input type="file" name="image">

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="~{fragment/layout :: head('ホーム')}" />
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="~{fragment/layout :: head('ホーム')}"></div>
+</head>
 
 <body>
 
@@ -15,11 +17,21 @@
 
     <h2>投稿一覧</h2>
 
-    <div class="post-card" th:each="post:${posts}">
-        <h3>
+    <p th:if="${#lists.isEmpty(posts)}" style="color: #999;">まだ投稿がありません。</p>
+
+    <div class="post-card" th:each="post : ${posts}"
+        style="border: 1px solid #e0e0e0; padding: 20px; margin-bottom: 15px; border-radius: 10px; background-color: #fff;">
+
+        <h3 style="margin-top: 0;">
             <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a>
         </h3>
-        <p th:text="${#strings.abbreviate(post.content,100)}"></p>
+
+        <p th:text="${#strings.abbreviate(post.content, 100)}"></p>
+
+        <div th:if="${post.imagePath}">
+            <img th:src="@{/images/{name}(name=${post.imagePath})}" alt="投稿画像"
+                style="max-width: 100%; height: auto; max-height: 200px; border-radius: 6px;" />
+        </div>
 
     </div>
 
