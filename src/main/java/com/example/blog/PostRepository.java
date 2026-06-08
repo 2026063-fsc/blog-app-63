@@ -15,31 +15,23 @@ public class PostRepository { //JdbcClientでデータベースを扱う
 
     public List<Post> findAll() { //findAll()メソッド
         return jdbcClient.sql("SELECT id, title, content, image_path FROM posts")
-                .query((rs, rowNum) -> new Post(
-                        rs.getLong("id"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getString("image_path")))
+                .query(Post.class)
                 .list();
     }
 
     public Optional<Post> findById(Long id) { //findById()メソッド
         return jdbcClient.sql("SELECT id, title, content,image_path FROM posts WHERE id = :id")
                 .param("id", id)
-                .query((rs, rowNum) -> new Post(
-                        rs.getLong("id"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getString("image_path")))
+                .query(Post.class)
                 .optional();
     }
 
-    public void save(Post post) { //saveメソッド
+    public void save(Post post) { //saveメソッド (新規投稿をホーム)
         jdbcClient.sql("INSERT INTO posts (title, content, image_path) VALUES (:title, :content, :imagePath)")
                 .param("title", post.getTitle())
                 .param("content", post.getContent())
                 .param("imagePath", post.getImagePath())
-                .update(); ///データの更新
+                .update(); //データの更新
     }
 
     public List<Post> search(String keyword) { //検索search()
@@ -48,11 +40,7 @@ public class PostRepository { //JdbcClientでデータベースを扱う
         String safeKeyword = "%" + keyword + "%";
         return jdbcClient.sql(sql)
                 .param("keyword", safeKeyword)
-                .query((rs, rowNum) -> new Post(
-                        rs.getLong("id"),
-                        rs.getString("title"),
-                        rs.getString("content"),
-                        rs.getString("image_path")))
+                .query(Post.class)
                 .list();
     }
 
