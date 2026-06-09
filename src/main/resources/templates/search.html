@@ -9,13 +9,7 @@
 
 <body>
 
-    <header>
-        <nav>
-            <a th:href="@{/}">ホーム</a>
-            <a th:href="@{/search}">検索</a>
-            <a class="plus-button" th:href="@{/post/new}">＋</a>
-        </nav>
-    </header>
+    <div th:replace="~{fragment/layout :: header}"></div>
 
     <h2>検索</h2>
 
