@@ -30,23 +30,16 @@ public class BlogController {
     }
 
     @GetMapping("/post/{id}")
-    public String derail(@PathVariable Long id, Model model) {
+    public String detail(@PathVariable Long id, Model model) {
         Post post = postService.findById(id);
         model.addAttribute("post", post);
         return "detail";
     }
     
     @GetMapping("/search") //検索画面が押されたとき（GET送信された）
-    public String search(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
-        List<Post> results; //検索結果の記事を入れるための空箱を用意
-        if (keyword != null && !keyword.isBlank()) { //入力が空でもスペース・改行等でもない場合
-            results = postRepository.search(keyword); //入力keywordを使用し、Repositoryで作成したSQLのLIKE検索を実行
-        } else { //入力されていない場合
-            results = postRepository.findAll(); //keywordがないためすべての記事を表示
-        }
-        model.addAttribute("posts", results); //検索結果をいれる
+    public String search(@RequestParam(required = false) String keyword, Model model) {
+        model.addAttribute("posts", postService.search(keyword)); //検索結果をいれる
         model.addAttribute("keyword", keyword); //入力した検索文字を残すため
-        
         return "search";
     }
 

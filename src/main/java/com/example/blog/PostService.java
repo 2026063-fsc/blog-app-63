@@ -1,6 +1,8 @@
 package com.example.blog;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +18,18 @@ public class PostService {
     }
 
     public Post findById(Long id) {
-        return postRepository.findById(id).orElse(null);
+        Optional<Post> optPost = postRepository.findById(id);
+        if (optPost.isPresent()) {
+            return optPost.get();
+        } else {
+            return null;
+        }
+    }
+    
+    public List<Post> search(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return postRepository.findAll();            
+        }
+        return postRepository.searchByTitle(keyword);
     }
 }
