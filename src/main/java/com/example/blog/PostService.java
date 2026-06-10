@@ -19,16 +19,16 @@ public class PostService {
 
     public Post findById(Long id) {
         Optional<Post> optPost = postRepository.findById(id);
-        if (optPost.isPresent()) {
+        if (optPost.isPresent()) { // isPresent()はOptional専用のデータ有無調べるメソッド
             return optPost.get();
         } else {
             return null;
         }
     }
-    
+
     public List<Post> search(String keyword) {
         if (keyword == null || keyword.isBlank()) {
-            return postRepository.findAll();            
+            return postRepository.findAll();
         }
         return postRepository.searchByTitle(keyword);
     }

@@ -7,19 +7,15 @@
 </head>
 
 <body>
-
     <header>
         <nav>
-
             <a th:href="@{/}">ホーム</a>
             <a th:href="@{/search}">検索</a>
-
             <button class="submit-btn" form="postForm">
                 投稿
             </button>
         </nav>
     </header>
-
 
     <form id="postForm" th:action="@{/post/create}" method="post" enctype="multipart/form-data">
         <div class="form-group">
